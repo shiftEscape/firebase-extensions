@@ -1,0 +1,79 @@
+[debug] [2023-06-23T17:30:22.974Z] ----------------------------------------------------------------------
+[debug] [2023-06-23T17:30:22.975Z] Command:       /Users/shiftescape/.nvm/versions/node/v18.16.1/bin/node /Users/shiftescape/.nvm/versions/node/v16.17.1/bin/firebase emulators:start --project=demo-test
+[debug] [2023-06-23T17:30:22.975Z] CLI Version:   12.3.0
+[debug] [2023-06-23T17:30:22.975Z] Platform:      darwin
+[debug] [2023-06-23T17:30:22.975Z] Node Version:  v18.16.1
+[debug] [2023-06-23T17:30:22.976Z] Time:          Sat Jun 24 2023 01:30:22 GMT+0800 (Singapore Standard Time)
+[debug] [2023-06-23T17:30:22.976Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-23T17:30:23.028Z] Object ".extensions" in "firebase.json" has unknown property: {"additionalProperty":"greet-the-world"}
+[debug] [2023-06-23T17:30:23.030Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-23T17:30:23.030Z] > authorizing via signed-in user (ajames.bellero@gmail.com)
+[info] i  emulators: Starting emulators: functions, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, extensions"}}
+[info] i  emulators: Detected demo project ID "demo-test", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail. {"metadata":{"emulator":{"name":"hub"},"message":"Detected demo project ID \"demo-test\", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail."}}
+[debug] [2023-06-23T17:30:23.033Z] Successfully read params from greet-the-world.env
+[debug] [2023-06-23T17:30:23.033Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/integration-tests/extensions/greet-the-world.env.0'
+[debug] [2023-06-23T17:30:23.033Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/integration-tests/extensions/greet-the-world.env.demo-test'
+[debug] [2023-06-23T17:30:23.033Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/integration-tests/extensions/greet-the-world.env.local'
+[debug] [2023-06-23T17:30:23.043Z] [extensions] Source code valid for ../..
+[warn] ⚠  Function 'greetTheWorld is missing a trigger in extension.yaml. Please add one, as triggers defined in code are ignored. {"metadata":{"emulator":{"name":"functions"},"message":"Function 'greetTheWorld is missing a trigger in extension.yaml. Please add one, as triggers defined in code are ignored."}}
+[debug] [2023-06-23T17:30:23.536Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-23T17:30:23.536Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-23T17:30:23.536Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-23T17:30:23.536Z] assigned listening specs for emulators {"user":{"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-06-23T17:30:23.543Z] [hub] writing locator at /var/folders/3p/7v428dhs0z5bn78vmn1s1gph0000gn/T/hub-demo-test.json
+[warn] ⚠  functions: The functions emulator is configured but there is no functions source directory. Have you run firebase init functions? {"metadata":{"emulator":{"name":"functions"},"message":"The functions emulator is configured but there is no functions source directory. Have you run \u001b[1mfirebase init functions\u001b[22m?"}}
+[debug] [2023-06-23T17:30:23.546Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2023-06-23T17:30:23.548Z] defaultcredentials: writing to file /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json
+[debug] [2023-06-23T17:30:23.550Z] Setting GAC to /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json"}}
+[debug] [2023-06-23T17:30:23.560Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-06-23T17:30:23.560Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-06-23T17:30:23.560Z] Starting Emulator UI with command {"binary":"node","args":["/Users/shiftescape/.cache/firebase/emulators/ui-v1.11.6/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/shiftescape/.cache/firebase/emulators/ui-v1.11.6/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-06-23T17:30:23.620Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-06-23T17:30:23.620Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[debug] [2023-06-23T17:30:23.817Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions\" for Cloud Functions..."}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[info] ✔  functions[us-central1-ext-greet-the-world-greetTheWorld]: http function initialized (http://127.0.0.1:5001/demo-test/us-central1/ext-greet-the-world-greetTheWorld). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/demo-test/us-central1/ext-greet-the-world-greetTheWorld)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+┌─────────────────────────┬─────────────────┬──────────────────────────────────────────────────┐
+│ Extension Instance Name │ Extension Ref   │ View in Emulator UI                              │
+├─────────────────────────┼─────────────────┼──────────────────────────────────────────────────┤
+│ greet-the-world         │ Local Extension │ http://127.0.0.1:4000/extensions/greet-the-world │
+└─────────────────────────┴─────────────────┴──────────────────────────────────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-06-23T17:31:01.222Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[debug] [2023-06-23T17:31:11.643Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers"}}
+[debug] [2023-06-23T17:31:11.817Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/package.json changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[debug] [2023-06-23T17:32:52.568Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[debug] [2023-06-23T17:32:53.665Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2023-06-23T17:32:53.765Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[debug] [2023-06-23T17:33:18.891Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
+[debug] [2023-06-23T17:39:05.641Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2023-06-23T17:39:05.742Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2023-06-23T17:39:06.592Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2023-06-23T17:39:06.693Z] File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/src/index.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: greetTheWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: greetTheWorld."}}
