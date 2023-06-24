@@ -31,8 +31,8 @@ author:
   email: ajames.bellero@gmail.com
   url: https://github.com/shiftEscape
 
-sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/tree/main
-releaseNotesUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/blob/main/CHANGELOG.md
+sourceUrl: https://github.com/shiftEscape/firebase-extensions/tree/main/firestore-chatgpt-bot
+releaseNotesUrl: https://github.com/shiftEscape/firebase-extensions/blob/main/firestore-chatgpt-bot/CHANGELOG.md
 
 billingRequired: true
 
