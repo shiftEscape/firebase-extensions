@@ -25,6 +25,7 @@ tags:
     text-ai,
     language-ai,
     large-language-models,
+    conversational-ai,
     llm,
     nlp,
     open-ai,
@@ -70,7 +71,7 @@ resources:
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.write
         resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_NAME}/{messageId}
-      runtime: 'nodejs18'
+      runtime: "nodejs18"
 
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs:
@@ -179,8 +180,7 @@ params:
       We generally recommend altering this or `top_p` but not both.
     type: string
     validationRegex: ^(?:0*(?:\.\d+)?|2(\.0*)?)$
-    validationErrorMessage:
-      Please specify a decimal representation of a number between 0 and 2.
+    validationErrorMessage: Please specify a decimal representation of a number between 0 and 2.
     required: false
     immutable: false
 
@@ -193,7 +193,6 @@ params:
       We generally recommend altering this or `temperature` but not both.
     type: string
     validationRegex: ^(?:0*(?:\.\d+)?|1(\.0*)?)$
-    validationErrorMessage:
-      Please specify a decimal representation of a number between 0 and 1.
+    validationErrorMessage: Please specify a decimal representation of a number between 0 and 1.
     required: false
     immutable: false
