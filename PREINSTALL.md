@@ -2,7 +2,7 @@ Use this extension to facilitate a basic deployment of a chatbot powered by Open
 
 > 💡 This extension will listen to the specified collection path for new message documents.
 
-Upon installation, you'll be prompted a list configuration parameters to customize your Chatbot implementation.
+Upon installation, you'll be prompted a list <a href="#configuration-parameters">configuration parameters</a> to customize your Chatbot implementation.
 
 Your `prompt` might look like this:
 
