@@ -26,7 +26,6 @@ const chatgpt = new ChatGPTAPI({ apiKey, completionParams });
  * This is triggered whenever a document in the specified ${param:COLLECTION_NAME} is written.
  * Generates an AI response based on the new or updated document containing user prompt
  *
- * @function generateAIResponse
  * @fires functions.firestore.document().onWrite
  * @param {functions.Change<DocumentSnapshot>} change - The change that occurred. Contains
  * information about the document before and after the write.

@@ -7,7 +7,6 @@ import configData, { Config } from "./config.js";
  * Initializes the application with the provided configuration, and generates parameters for
  * OpenAI's chat completion request from this configuration.
  *
- * @function initialize
  * @param {Config} config - The configuration object to initialize the application with.
  * @returns {Partial<openai.CreateChatCompletionRequest>} An object representing partial parameters
  * for OpenAI's chat completion request.
@@ -26,7 +25,6 @@ export const initialize = (
 /**
  * Logs the duration it took to receive an API response for a specified document path.
  *
- * @function receivedAPIResponse
  * @param {string} path - The path of the document for which the API response was received.
  * @param {number} duration - The time it took to receive the API response, in milliseconds.
  * @returns {void}
@@ -42,7 +40,6 @@ export const receivedAPIResponse = (path: string, duration: number): void => {
 /**
  * Logs an error encountered when calling the OpenAI API.
  *
- * @function errorCallingChatGPTAPI
  * @param {unknown} error - The error that was encountered.
  * @returns {void}
  */
