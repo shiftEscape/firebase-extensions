@@ -1,6 +1,6 @@
 # Chatbot with ChatGPT ⚡️🤖
 
-**Author**: Alvin James Bellero (**[https://alvinbellero.dev/](https://alvinbellero.dev/)**)
+**Author**: Alvin James Bellero (**[https://github.com/shiftEscape](https://github.com/shiftEscape)**)
 
 **Description**: Deploy customizable chatbots using ChatGPT API and Cloud Firestore
 
