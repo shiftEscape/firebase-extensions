@@ -14,7 +14,7 @@ Upon installation, you'll be prompted a list <a href="#configuration-parameters"
 
 Your `prompt` structure might look like this:
 
-```json
+```javascript
 {
   prompt: “Please explain the Big Bag Theory to a five-year-old”,
   parentMessageId: "(Optional) Message ID coming from API to track conversations"
