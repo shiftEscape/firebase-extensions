@@ -10,10 +10,12 @@ You can test out the extension right away by following these steps:
 ${param:PROMPT_FIELD}: "How far is the moon from earth?"
 ```
 
-4. In a few seconds, you'll see a `status` field containing `state`, `created_at` and `updated_at` keys added to the same document. This field will update as the extension processes the message.
+4. In a few seconds, you'll see a `status` field containing `state`, `created_at` and `updated_at` keys added to the same document. This field will update as the extension processes the response.
 5. When processing is finished, the `${param:RESPONSE_FIELD}` field of the document should be populated with the response from the ChatGPT API.
 
 ```typescript
+// Given the necessary imports already declared above
+// --
 const ref: DocumentReference = await admin
   .firestore()
   .collection("${param:COLLECTION_NAME}")
