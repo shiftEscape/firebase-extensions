@@ -17,6 +17,6 @@ export const generateCompletionParams = (
   return {
     model,
     ...(temperature ? { temperature } : {}),
-    ...(topP ? { topP } : {}),
+    ...(topP ? { top_p: topP } : {}),
   };
 };
