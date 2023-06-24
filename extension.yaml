@@ -30,7 +30,7 @@ author:
   authorName: Alvin James Bellero
   url: https://alvinbellero.dev/
 
-sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot
+sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/tree/main
 releaseNotesUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/blob/main/CHANGELOG.md
 
 billingRequired: true
