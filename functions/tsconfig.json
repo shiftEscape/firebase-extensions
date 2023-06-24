@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "esModuleInterop": true,
     "outDir": "lib",
     "sourceMap": true,
-    "strict": true,
-    "target": "es2017"
+    "strict": false,
+    "target": "es2017",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "node16",
+    "moduleResolution": "node16"
   },
   "compileOnSave": true,
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*"]
 }

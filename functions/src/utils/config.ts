@@ -16,12 +16,10 @@ const config: Config = {
   model: process.env.MODEL || "gpt-3.5-turbo",
   promptField: process.env.PROMPT_FIELD || "prompt",
   responseField: process.env.RESPONSE_FIELD || "response",
-  collectionName:
-    process.env.COLLECTION_NAME ||
-    "users/{uid}/discussions/{discussionId}/messages",
-  temperature: process.env.TEMPERATURE ?
-    parseFloat(process.env.TEMPERATURE) :
-    undefined,
+  collectionName: process.env.COLLECTION_NAME || "users/{userID}/messages",
+  temperature: process.env.TEMPERATURE
+    ? parseFloat(process.env.TEMPERATURE)
+    : undefined,
   topP: process.env.TOP_P ? parseFloat(process.env.TOP_P) : undefined,
   parentMessageIdField: "parentMessageId",
 };

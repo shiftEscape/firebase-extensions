@@ -1,16 +1,21 @@
 {
   "name": "functions",
   "version": "0.0.1",
+  "type": "module",
   "engines": {
-    "node": "18"
+    "node": ">=18"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*\"",
-    "lint:fix": "eslint \"src/**/*\" --fix",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "start:emulator": "cd _emulator && firebase emulators:start -P demo-test",
     "generate-readme": "firebase ext:info .. --markdown > ../README.md"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    }
   },
   "main": "lib/index.js",
   "dependencies": {

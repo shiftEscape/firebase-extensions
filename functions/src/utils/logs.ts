@@ -1,33 +1,23 @@
-/* eslint-disable max-len */
-import {logger} from "firebase-functions";
-import configData, {Config} from "./config";
+import { logger } from "firebase-functions";
+import configData, { Config } from "./config.js";
 
-export const init = (config: Config) => {
+export const initialize = (config: Config) => {
   logger.info(
     `[${config.namespace}] Initialized with config: ${JSON.stringify(config)}`
   );
 };
 
-export const warnMissingPromptOrResponse = (path: string) => {
-  logger.warn(
-    `[${configData.namespace}] Document '${path}' is missing either a prompt or response field.`
-  );
-};
-
-export const receivedAPIResponse = (
-  path: string,
-  duration: number
-) => {
+export const receivedAPIResponse = (path: string, duration: number) => {
+  const formattedDuration = duration.toFixed(2);
   logger.info(
-    `[${configData.namespace}] Received API response for document '${path}' in ${duration}ms.`,
-    {duration}
+    `[${configData.namespace}] Received API response for document '${path}' in ${formattedDuration} ms.`,
+    { duration: formattedDuration }
   );
 };
 
 export const errorCallingChatGPTAPI = (error: unknown) => {
   const message = error instanceof Error ? error.message : "UNKNOWN ERROR";
-
   logger.error(
-    `[${configData.namespace}] Error encountered calling GLM API: ${message}`
+    `[${configData.namespace}] Error encountered calling OpenAI API: ${message}`
   );
 };
