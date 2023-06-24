@@ -19,9 +19,19 @@ const {
 // Generate `completionParams`
 const completionParams = logs.initialize(config);
 
-// ChatGPT initialization
+// ChatGPT API Initialization
 const chatgpt = new ChatGPTAPI({ apiKey, completionParams });
 
+/**
+ * This is triggered whenever a document in the specified ${param:COLLECTION_NAME} is written.
+ * Generates an AI response based on the new or updated document containing user prompt
+ *
+ * @function generateAIResponse
+ * @fires functions.firestore.document().onWrite
+ * @param {functions.Change<DocumentSnapshot>} change - The change that occurred. Contains
+ * information about the document before and after the write.
+ * @returns {Promise<void>}
+ */
 export const generateAIResponse = functions.firestore
   .document(collectionName)
   .onWrite(
@@ -55,7 +65,7 @@ export const generateAIResponse = functions.firestore
       });
 
       try {
-        const t = performance.now();
+        const logStartTime = performance.now();
 
         // Send message to ChatGPT
         const response: ChatMessage = await chatgpt.sendMessage(newPrompt, {
@@ -65,7 +75,7 @@ export const generateAIResponse = functions.firestore
         });
 
         // Log API performance
-        const duration = performance.now() - t;
+        const duration = performance.now() - logStartTime;
         logs.receivedAPIResponse(ref.path, duration);
 
         const { text, parentMessageId } = response;
