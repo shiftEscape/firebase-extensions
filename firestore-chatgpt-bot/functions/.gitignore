@@ -8,4 +8,6 @@ typings/
 # Build file
 lib/
 
+*.log
+
 node_modules/
