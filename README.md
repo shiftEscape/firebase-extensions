@@ -5,7 +5,8 @@
 **Description**: Deploys basic, customizable chatbots using ChatGPT API and Cloud Firestore.
 
 **Details**:
-This extension facilitates a basic deployment of a chatbot powered by OpenAI's [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) via this [NPM package](https://www.npmjs.com/package/chatgpt), with prompts and responses maintained and managed via [Cloud Firestore](https://firebase.google.com/docs/firestore).
+
+Use this extension to facilitate a basic deployment of a chatbot powered by OpenAI's [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) via this [NPM package](https://www.npmjs.com/package/chatgpt), with prompts and responses maintained and managed via [Cloud Firestore](https://firebase.google.com/docs/firestore).
 
 Upon installation, you'll be prompted a list configuration parameters to customize your Chatbot implementation.
 
@@ -27,10 +28,11 @@ Before installing this extension, make sure you have your own `OpenAI API Key` (
 
 ## Billing
 
-This extension uses other Firebase or Google Cloud Platform services which may have associated charges:
+To install an extension, your project must be on the Blaze (pay as you go) plan. You will be charged a small amount (typically around $0.01/month) for the Firebase resources required by this extension (even if it is not used).
+This extension uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s no-cost tier:
 
-- Cloud Functions
 - Cloud Firestore
+- Cloud Functions (See [FAQs](https://firebase.google.com/support/faq#extensions-pricing))
 
 This extension also uses the following third-party services:
 

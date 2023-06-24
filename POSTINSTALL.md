@@ -1,29 +1,33 @@
-<!-- 
-This file provides your users an overview of how to use your extension after they've installed it. All content is optional, but this is the recommended format. Your users will see the contents of this file in the Firebase console after they install the extension.
+## Testing the Extension
 
-Include instructions for using the extension and any important functional details. Also include **detailed descriptions** for any additional post-installation setup required by the user.
+You can test out the extension right away by following these steps:
 
-Reference values for the extension instance using the ${param:PARAMETER_NAME} or ${function:VARIABLE_NAME} syntax.
-Learn more in the docs: https://firebase.google.com/docs/extensions/publishers/user-documentation#reference-in-postinstall
+1. Go to the [Cloud Firestore Dashboard](https://console.firebase.google.com/project/_/firestore) in the Firebase console.
+2. If it doesn't already exist, create the collection you specified during installation: **`${param:COLLECTION_NAME}`**.
+3. Add a document with a **`${param:PROMPT_FIELD}`** field containing your first message:
 
-Learn more about writing a POSTINSTALL.md file in the docs:
-https://firebase.google.com/docs/extensions/publishers/user-documentation#writing-postinstall
--->
+```
+${param:PROMPT_FIELD}: "How far is the moon from earth?"
+```
 
-# See it in action
+4. In a few seconds, you'll see a `status` field containing `state`, `created_at` and `updated_at` keys added to the same document. This field will update as the extension processes the message.
+5. When processing is finished, the `${param:RESPONSE_FIELD}` field of the document should be populated with the response from the ChatGPT API.
 
-You can test out this extension right away!
+```typescript
+const ref: DocumentReference = await admin
+  .firestore()
+  .collection("${param:COLLECTION_NAME}")
+  .add({
+    ${param:PROMPT_FIELD}: "How far is the moon from earth?",
+  });
 
-Visit the following URL:
-${function:greetTheWorld.url}
+ref.onSnapshot((snap: DocumentSnapshot) => {
+  if (snap.get("${param:RESPONSE_FIELD}")) {
+    console.log(`RESPONSE: ${snap.get("${param:RESPONSE_FIELD}")}`);
+  }
+});
+```
 
-# Using the extension
-
-When triggered by an HTTP request, this extension responds with the following specified greeting: "${param:GREETING} World from ${param:EXT_INSTANCE_ID}".
-
-To learn more about HTTP functions, visit the [functions documentation](https://firebase.google.com/docs/functions/http-events).
-
-<!-- We recommend keeping the following section to explain how to monitor extensions with Firebase -->
 # Monitoring
 
 As a best practice, you can [monitor the activity](https://firebase.google.com/docs/extensions/manage-installed-extensions#monitor) of your installed extension, including checks on its health, usage, and logs.
