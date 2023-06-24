@@ -1,0 +1,138 @@
+[debug] [2023-06-24T05:49:58.421Z] ----------------------------------------------------------------------
+[debug] [2023-06-24T05:49:58.422Z] Command:       /Users/shiftescape/.nvm/versions/node/v18.16.1/bin/node /Users/shiftescape/.nvm/versions/node/v16.17.1/bin/firebase emulators:start -P demo-test --debug
+[debug] [2023-06-24T05:49:58.422Z] CLI Version:   12.3.0
+[debug] [2023-06-24T05:49:58.423Z] Platform:      darwin
+[debug] [2023-06-24T05:49:58.423Z] Node Version:  v18.16.1
+[debug] [2023-06-24T05:49:58.423Z] Time:          Sat Jun 24 2023 13:49:58 GMT+0800 (Singapore Standard Time)
+[debug] [2023-06-24T05:49:58.423Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-24T05:49:58.474Z] Object ".extensions" in "firebase.json" has unknown property: {"additionalProperty":"firestore-chatgpt-bot"}
+[debug] [2023-06-24T05:49:58.477Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-24T05:49:58.477Z] > authorizing via signed-in user (ajames.bellero@gmail.com)
+[debug] [2023-06-24T05:49:58.519Z] Picked up JAVA_TOOL_OPTIONS: -Xmx4g
+
+[debug] [2023-06-24T05:49:58.547Z] openjdk version "19.0.2" 2023-01-17
+
+[debug] [2023-06-24T05:49:58.547Z] OpenJDK Runtime Environment (build 19.0.2+7-44)
+OpenJDK 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
+
+[debug] [2023-06-24T05:49:58.554Z] Parsed Java major version: 19
+[info] i  emulators: Starting emulators: functions, firestore, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, extensions"}}
+[info] i  emulators: Detected demo project ID "demo-test", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail. {"metadata":{"emulator":{"name":"hub"},"message":"Detected demo project ID \"demo-test\", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail."}}
+[debug] [2023-06-24T05:49:58.556Z] Successfully read params from firestore-chatgpt-bot.env
+[debug] [2023-06-24T05:49:58.556Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/_emulator/extensions/firestore-chatgpt-bot.env.0'
+[debug] [2023-06-24T05:49:58.556Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/_emulator/extensions/firestore-chatgpt-bot.env.demo-test'
+[debug] [2023-06-24T05:49:58.556Z] Error: ENOENT: no such file or directory, open '/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions/_emulator/extensions/firestore-chatgpt-bot.env.local'
+[debug] [2023-06-24T05:49:58.561Z] [extensions] Source code valid for ../..
+[debug] [2023-06-24T05:49:59.255Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-24T05:49:59.255Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-24T05:49:59.255Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-24T05:49:59.255Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-24T05:49:59.255Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] ⚠  ui: Emulator UI unable to start on port 4000, starting on 4001 instead. {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI unable to start on port 4000, starting on 4001 instead."}}
+[debug] [2023-06-24T05:49:59.255Z] assigned listening specs for emulators {"user":{"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4001},{"address":"::1","family":"IPv6","port":4001}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project demo-test. This may result in unexpected behavior. 
+[debug] [2023-06-24T05:49:59.263Z] [hub] writing locator at /var/folders/3p/7v428dhs0z5bn78vmn1s1gph0000gn/T/hub-demo-test.json
+[warn] ⚠  functions: The functions emulator is configured but there is no functions source directory. Have you run firebase init functions? {"metadata":{"emulator":{"name":"functions"},"message":"The functions emulator is configured but there is no functions source directory. Have you run \u001b[1mfirebase init functions\u001b[22m?"}}
+[debug] [2023-06-24T05:49:59.268Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2023-06-24T05:49:59.269Z] defaultcredentials: writing to file /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json
+[debug] [2023-06-24T05:49:59.271Z] Setting GAC to /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/shiftescape/.config/firebase/ajames_bellero_gmail.com_application_default_credentials.json"}}
+[warn] ⚠  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
+[warn] ⚠  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2023-06-24T05:49:59.278Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-06-24T05:49:59.278Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-06-24T05:49:59.278Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/shiftescape/.cache/firebase/emulators/cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","demo-test","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/shiftescape/.cache/firebase/emulators/cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"demo-test\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2023-06-24T05:49:59.294Z] Picked up JAVA_TOOL_OPTIONS: -Xmx4g
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Picked up JAVA_TOOL_OPTIONS: -Xmx4g\n"}}
+[debug] [2023-06-24T05:49:59.723Z] Jun 24, 2023 1:49:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jun 24, 2023 1:49:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
+[debug] [2023-06-24T05:49:59.735Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2023-06-24T05:49:59.735Z] 127.0.0.1:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-06-24T05:49:59.791Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-06-24T05:49:59.791Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-06-24T05:49:59.791Z] Starting Emulator UI with command {"binary":"node","args":["/Users/shiftescape/.cache/firebase/emulators/ui-v1.11.6/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/shiftescape/.cache/firebase/emulators/ui-v1.11.6/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-06-24T05:49:59.852Z] Web / API server started at 127.0.0.1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4001\n"}}
+[debug] [2023-06-24T05:49:59.852Z] Web / API server started at ::1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4001\n"}}
+[debug] [2023-06-24T05:50:00.046Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/shiftescape/Documents/Projects/firestore-chatgpt-bot/functions\" for Cloud Functions..."}}
+[info] ✔  functions: Loaded functions definitions from source: generateAIResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: generateAIResponse."}}
+[debug] [2023-06-24T05:50:00.049Z] addFirestoreTrigger "{\"eventTrigger\":{\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":\"projects/demo-test/databases/(default)/documents/${COLLECTION_NAME}/{messageId}\",\"service\":\"firestore.googleapis.com\"}}"
+[debug] [2023-06-24T05:50:00.050Z] >>> [apiv2][query] PUT http://127.0.0.1:8080/emulator/v1/projects/demo-test/triggers/us-central1-ext-firestore-chatgpt-bot-generateAIResponse-0 [none]
+[debug] [2023-06-24T05:50:00.051Z] >>> [apiv2][body] PUT http://127.0.0.1:8080/emulator/v1/projects/demo-test/triggers/us-central1-ext-firestore-chatgpt-bot-generateAIResponse-0 "{\"eventTrigger\":{\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":\"projects/demo-test/databases/(default)/documents/${COLLECTION_NAME}/{messageId}\",\"service\":\"firestore.googleapis.com\"}}"
+[debug] [2023-06-24T05:50:00.071Z] Jun 24, 2023 1:50:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jun 24, 2023 1:50:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-06-24T05:50:00.148Z] Jun 24, 2023 1:50:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jun 24, 2023 1:50:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2023-06-24T05:50:00.347Z] <<< [apiv2][status] PUT http://127.0.0.1:8080/emulator/v1/projects/demo-test/triggers/us-central1-ext-firestore-chatgpt-bot-generateAIResponse-0 200
+[debug] [2023-06-24T05:50:00.347Z] <<< [apiv2][body] PUT http://127.0.0.1:8080/emulator/v1/projects/demo-test/triggers/us-central1-ext-firestore-chatgpt-bot-generateAIResponse-0 {}
+[info] ✔  functions[us-central1-ext-firestore-chatgpt-bot-generateAIResponse]: firestore function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mfirestore\u001b[22m function initialized."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4001/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4001/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:8080 │ http://127.0.0.1:4001/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4001/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬─────────────────┬────────────────────────────────────────────────────────┐
+│ Extension Instance Name │ Extension Ref   │ View in Emulator UI                                    │
+├─────────────────────────┼─────────────────┼────────────────────────────────────────────────────────┤
+│ firestore-chatgpt-bot   │ Local Extension │ http://127.0.0.1:4001/extensions/firestore-chatgpt-bot │
+└─────────────────────────┴─────────────────┴────────────────────────────────────────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-06-24T05:50:02.408Z] Received signal SIGINT (Ctrl-C) 1
+[info]  
+[info] i  emulators: Received SIGINT (Ctrl-C) for the first time. Starting a clean shutdown. 
+[info] i  emulators: Please wait for a clean shutdown or send the SIGINT (Ctrl-C) signal again to stop right now. 
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  ui: Stopping Emulator UI {"metadata":{"emulator":{"name":"ui"},"message":"Stopping Emulator UI"}}
+[warn] ⚠  Emulator UI has exited upon receiving signal: SIGINT 
+[info] i  extensions: Stopping Extensions Emulator {"metadata":{"emulator":{"name":"extensions"},"message":"Stopping Extensions Emulator"}}
+[debug] [2023-06-24T05:50:02.416Z] [Extensions] Stopping Extensions emulator, this is a noop.
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
+[debug] [2023-06-24T05:50:02.418Z] *** shutting down gRPC server since JVM is shutting down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** shutting down gRPC server since JVM is shutting down\n"}}
+[debug] [2023-06-24T05:50:02.424Z] *** server shut down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** server shut down\n"}}
+[debug] [2023-06-24T05:50:02.621Z] Received signal SIGINT (Ctrl-C) 2
+[info]  
+[debug] [2023-06-24T05:50:02.622Z] Skipping clean onExit() and cleanShutdown()
+[warn] ⚠  emulators: Received SIGINT (Ctrl-C) 2 times. You have forced the Emulator Suite to exit without waiting for 1 subprocess to finish. These processes may still be running on your machine:  
+[info] 
+┌────────────────────┬────────────────┬───────┐
+│ Emulator           │ Host:Port      │ PID   │
+├────────────────────┼────────────────┼───────┤
+│ Firestore Emulator │ 127.0.0.1:8080 │ 11218 │
+└────────────────────┴────────────────┴───────┘
+
+To force them to exit run:
+
+[info] kill 11218
+

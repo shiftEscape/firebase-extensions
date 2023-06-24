@@ -1,27 +1,64 @@
-/*
- * This template contains a HTTP function that responds
- * with a greeting when called
- *
- * Reference PARAMETERS in your functions code with:
- * `process.env.<parameter-name>`
- * Learn more about building extensions in the docs:
- * https://firebase.google.com/docs/extensions/publishers
- */
-
 import * as functions from "firebase-functions";
+import * as logs from "./utils/logs";
 
-exports.greetTheWorld = functions.https.onRequest(
-  (req: functions.Request, res: functions.Response) => {
-    // Here we reference a user-provided parameter
-    // (its value is provided by the user during installation)
-    const consumerProvidedGreeting = process.env.GREETING;
+import {DocumentReference, DocumentSnapshot} from "firebase-admin/firestore";
+import {ChatGPTAPI, ChatMessage} from "chatgpt";
+import {generateCompletionParams} from "./utils/helpers";
 
-    // And here we reference an auto-populated parameter
-    // (its value is provided by Firebase after installation)
-    const instanceId = process.env.EXT_INSTANCE_ID;
+import config from "./utils/config";
 
-    const greeting = `${consumerProvidedGreeting} World from ${instanceId}`;
+const {
+  apiKey,
+  promptField,
+  responseField,
+  collectionName,
+  parentMessageIdField,
+} = config;
 
-    res.send(greeting);
-  }
-);
+logs.init(config);
+
+// ChatGPT initialization
+const chatgpt = new ChatGPTAPI({
+  apiKey,
+  completionParams: generateCompletionParams(config),
+});
+
+exports.generateAIResponse = functions.firestore
+  .document(collectionName)
+  .onWrite(
+    async (change: functions.Change<DocumentSnapshot>): Promise<void> => {
+      // Exit onDelete
+      if (!change.after) {
+        return;
+      }
+
+      const ref: DocumentReference = change.after.ref;
+      const newPrompt = await change.after.get(promptField);
+      const parentMessageId = await change.after.get(parentMessageIdField);
+
+      try {
+        const t = performance.now();
+
+        // Send message to ChatGPT
+        const response: ChatMessage = await chatgpt.sendMessage(newPrompt, {
+          ...(parentMessageId ? {parentMessageId} : {}),
+        });
+
+        // Log API performance
+        const duration = performance.now() - t;
+        logs.receivedAPIResponse(ref.path, duration);
+
+        const {text, id} = response;
+
+        // Write response to Firestore Doc
+        ref.update({
+          [responseField]: text,
+          [parentMessageIdField]: id,
+        });
+      } catch (err) {
+        logs.errorCallingChatGPTAPI(err);
+      }
+
+      return;
+    }
+  );
