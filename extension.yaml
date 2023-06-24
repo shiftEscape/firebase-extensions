@@ -73,11 +73,11 @@ resources:
 # Learn more in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
 params:
-  - param: CHATGPT_API_KEY
-    label: ChatGPT API Key
+  - param: OPENAI_API_KEY
+    label: OpenAI API Key
     description: >-
-      API Key to be used on ChatGPT API.
-      We recommend creating a new [KEY](https://platform.openai.com/).
+      API Key to be used on OpenAI Chat Completion API
+      We recommend creating a new [KEY](https://platform.openai.com/) or use an existing one.
     type: secret
     example: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxx
     required: true

@@ -18,7 +18,7 @@ export const StatusType = {
 
 const config: Config = {
   namespace: "firestore-chatgpt-bot",
-  apiKey: process.env.CHATGPT_API_KEY || "",
+  apiKey: process.env.OPENAI_API_KEY || "",
   model: process.env.MODEL || "gpt-3.5-turbo",
   promptField: process.env.PROMPT_FIELD || "prompt",
   responseField: process.env.RESPONSE_FIELD || "response",
