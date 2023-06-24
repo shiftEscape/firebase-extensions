@@ -1,0 +1,36 @@
+{
+  "name": "firestore-chatgpt-bot",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "start:emulator": "cd _emulator && firebase emulators:start -P demo-test",
+    "generate-readme": "firebase ext:info .. --markdown > ../README.md"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    }
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "chatgpt": "^5.2.5",
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.15.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.26.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}

@@ -1,0 +1,205 @@
+name: firestore-chatgpt-bot
+version: 0.0.1 # Follow semver versioning
+specVersion: v1beta # Version of the Firebase Extensions specification
+
+displayName: Chatbot with ChatGPT
+
+description: >-
+  Deploy customizable chatbots using ChatGPT API and Cloud Firestore.
+
+license: Apache-2.0
+
+icon: icon.png
+
+tags:
+  [
+    ai,
+    chatgpt,
+    chatbot-api,
+    generative-ai,
+    text-ai,
+    language-ai,
+    large-language-models,
+    conversational-ai,
+    llm,
+    nlp,
+    open-ai,
+  ]
+
+author:
+  authorName: Alvin James Bellero
+  url: https://alvinbellero.dev/
+
+sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/tree/main
+releaseNotesUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/blob/main/CHANGELOG.md
+
+billingRequired: true
+
+externalServices:
+  - name: OpenAI Chat Completion API
+    PricingUri: https://openai.com/pricing
+
+roles:
+  - role: datastore.user
+    reason:
+      Allows this extension to access Cloud Firestore to read and process generated
+      responses.
+
+# In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
+# required for your extension to operate.
+# Learn more in the docs:
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#apis-field
+
+# In a `roles` field, list any IAM access roles required for your extension to operate.
+# Learn more in the docs:
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#roles-field
+
+# In the `resources` field, list each of your extension's functions, including the trigger for each function.
+# Learn more in the docs:
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#resources-field
+resources:
+  - name: generateAIResponse
+    type: firebaseextensions.v1beta.function
+    description: >-
+      Listens to Firestore data writes to generate conversations.
+    properties:
+      location: ${LOCATION}
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.write
+        resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_NAME}/{messageId}
+      runtime: "nodejs18"
+
+# In the `params` field, set up your extension's user-configured parameters.
+# Learn more in the docs:
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
+params:
+  - param: OPENAI_API_KEY
+    label: OpenAI API Key
+    description: >-
+      API Key to be used on OpenAI Chat Completion API
+      We recommend creating a new [KEY](https://platform.openai.com/) or use an existing one.
+    type: secret
+    example: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    required: true
+
+  - param: COLLECTION_NAME
+    label: Collection Path
+    description: >-
+      Path to a Cloud Firestore collection which will represent a discussion
+      with AI. The function will listen changes on this collection
+    type: string
+    example: users/{uid}/messages
+    required: true
+    immutable: false
+
+  - param: PROMPT_FIELD
+    label: Prompt Field
+    description: >-
+      The field in the message document that contains the prompt.
+    type: string
+    default: prompt
+    example: prompt
+    required: true
+    immutable: false
+
+  - param: RESPONSE_FIELD
+    label: Response Field
+    description: >-
+      The field in the message document into which to put the response.
+    type: string
+    default: response
+    example: response
+    required: true
+    immutable: false
+
+  - param: LOCATION
+    label: Cloud Functions Location
+    description: >-
+      Where do you want to deploy the functions created for this extension? For
+      help selecting a location, refer to the [location selection
+      guide](https://firebase.google.com/docs/functions/locations).
+    type: select
+    options:
+      - label: Iowa (us-central1)
+        value: us-central1
+      - label: South Carolina (us-east1)
+        value: us-east1
+      - label: Northern Virginia (us-east4)
+        value: us-east4
+      - label: Los Angeles (us-west2)
+        value: us-west2
+      - label: Salt Lake City (us-west3)
+        value: us-west3
+      - label: Las Vegas (us-west4)
+        value: us-west4
+      - label: Warsaw (europe-central2)
+        value: europe-central2
+      - label: Belgium (europe-west1)
+        value: europe-west1
+      - label: London (europe-west2)
+        value: europe-west2
+      - label: Frankfurt (europe-west3)
+        value: europe-west3
+      - label: Zurich (europe-west6)
+        value: europe-west6
+      - label: Hong Kong (asia-east2)
+        value: asia-east2
+      - label: Tokyo (asia-northeast1)
+        value: asia-northeast1
+      - label: Osaka (asia-northeast2)
+        value: asia-northeast2
+      - label: Seoul (asia-northeast3)
+        value: asia-northeast3
+      - label: Mumbai (asia-south1)
+        value: asia-south1
+      - label: Jakarta (asia-southeast2)
+        value: asia-southeast2
+      - label: Montreal (northamerica-northeast1)
+        value: northamerica-northeast1
+      - label: Sao Paulo (southamerica-east1)
+        value: southamerica-east1
+      - label: Sydney (australia-southeast1)
+        value: australia-southeast1
+    default: us-central1
+    required: true
+    immutable: true
+
+  - param: MODEL
+    label: Language model
+    description: >-
+      Which language model do you want to use?
+      View the list [here](https://platform.openai.com/docs/models/overview).
+    type: select
+    options:
+      - label: GPT-3.5
+        value: gpt-3.5-turbo
+      - label: GPT-4
+        value: gpt-4
+    default: gpt-3.5-turbo
+    required: true
+    immutable: false
+
+  - param: TEMPERATURE
+    label: Temperature
+    description: >-
+      What sampling `temperature` to use, between 0 and 2. Higher values like 0.8 will make
+      the output more random, while lower values like 0.2 will make it more focused and deterministic.
+      [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature).
+    type: string
+    validationRegex: ^(?:0*(?:\.\d+)?|2(\.0*)?)$
+    validationErrorMessage: Please specify a decimal representation of a number between 0 and 2.
+    required: false
+    immutable: false
+
+  - param: TOP_P
+    label: Nucleus Sampling Probability
+    description: >-
+      An alternative to sampling with temperature, called `nucleus sampling`,
+      where the model considers the results of the tokens with `top_p` probability mass.
+      So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+      [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p).
+    type: string
+    validationRegex: ^(?:0*(?:\.\d+)?|1(\.0*)?)$
+    validationErrorMessage: Please specify a decimal representation of a number between 0 and 1.
+    required: false
+    immutable: false
