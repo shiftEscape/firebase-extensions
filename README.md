@@ -8,6 +8,8 @@
 
 Use this extension to facilitate a basic deployment of a chatbot powered by OpenAI's [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) via this [NPM package](https://www.npmjs.com/package/chatgpt), with prompts and responses maintained and managed via [Cloud Firestore](https://firebase.google.com/docs/firestore).
 
+> 💡 This extension will listen to the specified collection path for new message documents.
+
 Upon installation, you'll be prompted a list configuration parameters to customize your Chatbot implementation.
 
 Your `prompt` might look like this:
@@ -21,18 +23,23 @@ Your `prompt` might look like this:
 
 **Additional Setup:**
 
-Before installing this extension, make sure you have your own `OpenAI API Key` (you can get it from [here](https://platform.openai.com/)), and set up the following Firebase services in your Firebase project:
+Before installing this extension, make sure you have:
 
-- **Cloud Firestore** to store prompts and AI responses.
-  Follow the steps in the [documentation](https://firebase.google.com/docs/firestore/quickstart#create) to create a Cloud Firestore database.
+1. Your own `OpenAI API Key` (you can get it from [here](https://platform.openai.com/)).
+2. Set up the following Firebase services in your Firebase project:
+
+   2.1. **Cloud Firestore** to store prompts and AI responses.
+   Follow the steps in the [documentation](https://firebase.google.com/docs/firestore/quickstart#create) to create a Cloud Firestore database.
 
 ## Billing
 
-To install an extension, your project must be on the Blaze (pay as you go) plan. You will be charged a small amount (typically around $0.01/month) for the Firebase resources required by this extension (even if it is not used).
-This extension uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s no-cost tier:
+To install an extension, your project must be on the [Blaze (pay as you go) plan](https://firebase.google.com/pricing)
 
-- Cloud Firestore
-- Cloud Functions (See [FAQs](https://firebase.google.com/support/faq#extensions-pricing))
+- You will be charged a small amount (typically around $0.01/month) for the Firebase resources required by this extension (even if it is not used).
+- This extension uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s no-cost tier:
+
+  - Cloud Firestore
+  - Cloud Functions (Node.js >=18 runtime. See [FAQs](https://firebase.google.com/support/faq#extensions-pricing))
 
 This extension also uses the following third-party services:
 
