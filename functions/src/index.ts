@@ -1,15 +1,12 @@
 import * as functions from "firebase-functions";
 import * as logs from "./utils/logs.js";
-
 import {
   DocumentReference,
   DocumentSnapshot,
   FieldValue,
 } from "firebase-admin/firestore";
 import { ChatGPTAPI, ChatMessage } from "chatgpt";
-import { generateCompletionParams } from "./utils/helpers.js";
-
-import config from "./utils/config.js";
+import config, { StatusType } from "./utils/config.js";
 
 const {
   apiKey,
@@ -19,13 +16,11 @@ const {
   parentMessageIdField,
 } = config;
 
-logs.initialize(config);
+// Generate `completionParams`
+const completionParams = logs.initialize(config);
 
 // ChatGPT initialization
-const chatgpt = new ChatGPTAPI({
-  apiKey,
-  completionParams: generateCompletionParams(config),
-});
+const chatgpt = new ChatGPTAPI({ apiKey, completionParams });
 
 export const generateAIResponse = functions.firestore
   .document(collectionName)
@@ -36,24 +31,24 @@ export const generateAIResponse = functions.firestore
       }
 
       const newPrompt = await change.after.get(promptField);
-      const callState = change.after.get("status.state");
+      const apiCallState = change.after.get("status.state");
 
       // Exit on invalid prompt and various status
       if (
         !newPrompt ||
         typeof newPrompt !== "string" ||
-        ["PROCESSING", "COMPLETED", "ERRORED"].includes(callState)
+        Object.keys(StatusType).includes(apiCallState)
       ) {
         return;
       }
 
       const ref: DocumentReference = change.after.ref;
-      const parentMessageId = await change.after.get(parentMessageIdField);
+      const prevParentMsgId = await change.after.get(parentMessageIdField);
 
       // Initial processing status
       await ref.update({
         status: {
-          state: "PROCESSING",
+          state: StatusType.PROCESSING,
           created_at: FieldValue.serverTimestamp(),
           updated_at: FieldValue.serverTimestamp(),
         },
@@ -64,20 +59,22 @@ export const generateAIResponse = functions.firestore
 
         // Send message to ChatGPT
         const response: ChatMessage = await chatgpt.sendMessage(newPrompt, {
-          ...(parentMessageId ? { parentMessageId } : {}),
+          ...(prevParentMsgId
+            ? { [parentMessageIdField]: prevParentMsgId }
+            : {}),
         });
 
         // Log API performance
         const duration = performance.now() - t;
         logs.receivedAPIResponse(ref.path, duration);
 
-        const { text, id } = response;
+        const { text, parentMessageId } = response;
 
         // Write response to Firestore Doc
         ref.update({
           [responseField]: text,
-          [parentMessageIdField]: id,
-          "status.state": "COMPLETED",
+          [parentMessageIdField]: parentMessageId,
+          "status.state": StatusType.COMPLETED,
           "status.updated_at": FieldValue.serverTimestamp(),
         });
       } catch (err) {
@@ -85,7 +82,7 @@ export const generateAIResponse = functions.firestore
 
         // Update on API call error
         ref.update({
-          "status.state": "ERRORED",
+          "status.state": StatusType.ERRORED,
           "status.updated_at": FieldValue.serverTimestamp(),
         });
       }

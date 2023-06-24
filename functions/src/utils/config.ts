@@ -10,6 +10,12 @@ export interface Config {
   parentMessageIdField: string;
 }
 
+export const StatusType = {
+  PROCESSING: "PROCESSING",
+  COMPLETED: "COMPLETED",
+  ERRORED: "ERRORED",
+};
+
 const config: Config = {
   namespace: "firestore-chatgpt-bot",
   apiKey: process.env.API_KEY || "",
