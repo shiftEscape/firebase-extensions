@@ -2,7 +2,7 @@
 
 **Author**: Alvin James Bellero (**[https://alvinbellero.dev/](https://alvinbellero.dev/)**)
 
-**Description**: Deploys basic, customizable chatbots using ChatGPT API and Cloud Firestore.
+**Description**: Deploy customizable chatbots using ChatGPT API and Cloud Firestore
 
 **Details**:
 

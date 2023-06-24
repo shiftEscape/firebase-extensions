@@ -5,7 +5,7 @@ specVersion: v1beta # Version of the Firebase Extensions specification
 displayName: Chatbot with ChatGPT
 
 description: >-
-  Deploys customizable chatbots using ChatGPT API and Firestore.
+  Deploy customizable chatbots using ChatGPT API and Cloud Firestore.
 
 license: Apache-2.0
 
