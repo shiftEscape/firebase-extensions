@@ -1,4 +1,4 @@
-# Chatbot with ChatGPT
+# Chatbot with ChatGPT ⚡️🤖
 
 **Author**: Alvin James Bellero (**[https://github.com/shiftEscape](https://github.com/shiftEscape)**)
 
@@ -49,19 +49,19 @@ When you use Firebase Extensions, you're only charged for the underlying resourc
 
 ## Configuration Parameters
 
-- **Collection Path**: Path to a Cloud Firestore collection which will represent a discussion with OpenAI's ChatGPT.
+- **`Collection Path`**: Path to a Cloud Firestore collection which will represent a discussion with OpenAI's ChatGPT.
 
-- **Prompt Field**: The field in the message document that contains the prompt. (Default: `prompt`)
+- **`Prompt Field`**: The field in the message document that contains the prompt. (Default: `prompt`)
 
-- **Response Field**: The field in the message document into which to put the response. (Default: `response`)
+- **`Response Field`**: The field in the message document into which to put the response. (Default: `response`)
 
-- **Cloud Functions Location**: Where do you want to deploy the functions created for this extension? For help selecting a location, refer to the [location selection guide](https://firebase.google.com/docs/functions/locations).
+- **`Cloud Functions Location`**: Where do you want to deploy the functions created for this extension? For help selecting a location, refer to the [location selection guide](https://firebase.google.com/docs/functions/locations).
 
-- **Language Model**: Which language `model` do you want to use? Refer to [OpenAI's Model Reference](https://platform.openai.com/docs/models/overview).
+- **`Language Model`**: Which language `model` do you want to use? Refer to [OpenAI's Model Reference](https://platform.openai.com/docs/models/overview).
 
-- **Temperature**: What sampling `temperature` to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature).
+- **`Temperature`**: What sampling `temperature` to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature).
 
-- **Nucleus Sampling Probability**: An alternative to sampling with temperature, called `nucleus sampling`, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p).
+- **`Nucleus Sampling Probability`**: An alternative to sampling with temperature, called `nucleus sampling`, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. [Learn more here](https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p).
 
 ## Cloud Functions
 
