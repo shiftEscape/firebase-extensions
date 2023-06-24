@@ -12,7 +12,7 @@ export interface Config {
 
 const config: Config = {
   namespace: "firestore-chatgpt-bot",
-  apiKey: process.env.COLLECTION_NAME || "",
+  apiKey: process.env.API_KEY || "",
   model: process.env.MODEL || "gpt-3.5-turbo",
   promptField: process.env.PROMPT_FIELD || "prompt",
   responseField: process.env.RESPONSE_FIELD || "response",
