@@ -6,8 +6,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "npx tsc",
-    "build:watch": "npx tsc --watch",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
     "start:emulator": "cd _emulator && firebase emulators:start -P demo-test",
     "generate-readme": "firebase ext:info .. --markdown > ../README.md"
   },
@@ -30,7 +30,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.26.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.9.0"
+    "typescript": "^4.9.5"
   },
   "private": true
 }
