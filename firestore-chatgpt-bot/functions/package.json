@@ -6,8 +6,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "build": "npx tsc",
+    "build:watch": "npx tsc --watch",
     "start:emulator": "cd _emulator && firebase emulators:start -P demo-test",
     "generate-readme": "firebase ext:info .. --markdown > ../README.md"
   },
