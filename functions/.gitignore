@@ -5,9 +5,6 @@
 # Typescript v1 declaration files
 typings/
 
-# Firebase logs
-functions/**/*-debug.log
-
 # Build file
 lib/
 

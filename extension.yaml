@@ -3,26 +3,50 @@
 
 # Identifier for your extension
 # TODO: Replace this with an descriptive name for your extension.
-name: greet-the-world
+name: firestore-chatgpt-bot
 version: 0.0.1 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 # Friendly display name for your extension (~3-5 words)
-displayName: Greet the world
+displayName: Chatbot with ChatGPT
 
 # Brief description of the task your extension performs (~1 sentence)
 description: >-
-  Sends the world a greeting.
+  Deploys customizable chatbots using ChatGPT API and Firestore.
 
 license: Apache-2.0 # https://spdx.org/licenses/
 
+tags:
+  [
+    ai,
+    chatgpt,
+    chatbot-api,
+    generative-ai,
+    text-ai,
+    language-ai,
+    large-language-models,
+    llm,
+    nlp,
+    open-ai,
+  ]
+
+author:
+  authorName: Alvin James Bellero
+  url: https://alvinbellero.dev/
+
 # Public URL for the source code of your extension.
-# TODO:  Replace this with your GitHub repo.
-sourceUrl: https://github.com/ORG_OR_USER/REPO_NAME
+sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot
+releaseNotesUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/blob/main/CHANGELOG.md
 
 # Specify whether a paid-tier billing plan is required to use your extension.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/reference/extension-yaml#billing-required-field
 billingRequired: true
+
+roles:
+  - role: datastore.user
+    reason:
+      Allows this extension to access Cloud Firestore to read and process generated
+      messages.
 
 # In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
 # required for your extension to operate.
@@ -37,25 +61,139 @@ billingRequired: true
 # Learn more in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml#resources-field
 resources:
-  - name: greetTheWorld
+  - name: generateAIResponse
     type: firebaseextensions.v1beta.function
     description: >-
-      HTTP request-triggered function that responds with a specified greeting message
+      Listens to Firestore data writes to generate conversations.
     properties:
-      # httpsTrigger is used for an HTTP triggered function.
-      httpsTrigger: {}
-      runtime: "nodejs18"
+      location: ${LOCATION}
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.write
+        resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_NAME}/{messageId}
+      runtime: 'nodejs18'
 
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
 params:
-  - param: GREETING
-    label: Greeting for the world
+  - param: COLLECTION_NAME
+    label: Collection Path
     description: >-
-      What do you want to say to the world?
-      For example, Hello world? or What's up, world?
+      Path to a Cloud Firestore collection which will represent a discussion
+      with OpenAI's ChatGPT.
     type: string
-    default: Hello
+    example: users/{uid}/discussions/{discussionId}/messages
     required: true
+    immutable: false
+
+  - param: PROMPT_FIELD
+    label: Prompt Field
+    description: >-
+      The field in the message document that contains the prompt.
+    type: string
+    default: prompt
+    example: prompt
+    required: true
+    immutable: false
+
+  - param: RESPONSE_FIELD
+    label: Response Field
+    description: >-
+      The field in the message document into which to put the response.
+    type: string
+    default: response
+    example: response
+    required: true
+    immutable: false
+
+  - param: LOCATION
+    label: Cloud Functions location
+    description: >-
+      Where do you want to deploy the functions created for this extension? For
+      help selecting a location, refer to the [location selection
+      guide](https://firebase.google.com/docs/functions/locations).
+    type: select
+    options:
+      - label: Iowa (us-central1)
+        value: us-central1
+      - label: South Carolina (us-east1)
+        value: us-east1
+      - label: Northern Virginia (us-east4)
+        value: us-east4
+      - label: Los Angeles (us-west2)
+        value: us-west2
+      - label: Salt Lake City (us-west3)
+        value: us-west3
+      - label: Las Vegas (us-west4)
+        value: us-west4
+      - label: Warsaw (europe-central2)
+        value: europe-central2
+      - label: Belgium (europe-west1)
+        value: europe-west1
+      - label: London (europe-west2)
+        value: europe-west2
+      - label: Frankfurt (europe-west3)
+        value: europe-west3
+      - label: Zurich (europe-west6)
+        value: europe-west6
+      - label: Hong Kong (asia-east2)
+        value: asia-east2
+      - label: Tokyo (asia-northeast1)
+        value: asia-northeast1
+      - label: Osaka (asia-northeast2)
+        value: asia-northeast2
+      - label: Seoul (asia-northeast3)
+        value: asia-northeast3
+      - label: Mumbai (asia-south1)
+        value: asia-south1
+      - label: Jakarta (asia-southeast2)
+        value: asia-southeast2
+      - label: Montreal (northamerica-northeast1)
+        value: northamerica-northeast1
+      - label: Sao Paulo (southamerica-east1)
+        value: southamerica-east1
+      - label: Sydney (australia-southeast1)
+        value: australia-southeast1
+    required: true
+    immutable: true
+
+  - param: MODEL
+    label: Language model
+    description: >-
+      Which language model do you want to use?
+    type: select
+    options:
+      - label: GPT-3.5
+        value: gpt-3.5-turbo
+      - label: GPT-4
+        value: gpt-4
+    required: true
+    immutable: false
+
+  - param: TEMPERATURE
+    label: Temperature
+    description: >-
+      What sampling temperature to use, between 0 and 2.
+      Higher values like 0.8 will make the output more random, 
+      while lower values like 0.2 will make it more focused and deterministic.
+      We generally recommend altering this or `top_p` but not both.
+    type: string
+    validationRegex: ^(?:0*(?:\.\d+)?|2(\.0*)?)$
+    validationErrorMessage:
+      Please specify a decimal representation of a number between 0 and 2.
+    required: false
+    immutable: false
+
+  - param: TOP_P
+    label: Nucleus Sampling Probability
+    description: >-
+      An alternative to sampling with temperature, called nucleus sampling, 
+      where the model considers the results of the tokens with top_p probability mass.
+      So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+      We generally recommend altering this or `temperature` but not both.
+    type: string
+    validationRegex: ^(?:0*(?:\.\d+)?|1(\.0*)?)$
+    validationErrorMessage:
+      Please specify a decimal representation of a number between 0 and 1.
+    required: false
     immutable: false
