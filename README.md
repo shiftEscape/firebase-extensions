@@ -12,11 +12,11 @@ Use this extension to facilitate a basic deployment of a chatbot powered by Open
 
 Upon installation, you'll be prompted a list <a href="#configuration-parameters">configuration parameters</a> to customize your Chatbot implementation.
 
-Your `prompt` might look like this:
+Your `prompt` structure might look like this:
 
-```javascript
+```json
 {
-  prompt: “Please explain the Big Bag Theory to a five year-old”,
+  prompt: “Please explain the Big Bag Theory to a five-year-old”,
   parentMessageId: "(Optional) Message ID coming from API to track conversations"
 }
 ```
