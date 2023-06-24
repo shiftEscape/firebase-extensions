@@ -1,12 +1,11 @@
 {
-  "name": "functions",
+  "name": "firestore-chatgpt-bot",
   "version": "0.0.1",
   "type": "module",
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "prepare": "npm run build",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "start:emulator": "cd _emulator && firebase emulators:start -P demo-test",

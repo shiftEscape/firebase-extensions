@@ -1,4 +1,4 @@
-Use this extension to facilitate a basic deployment of a chatbot powered by OpenAI's [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) via this [NPM package](https://www.npmjs.com/package/chatgpt), with prompts and responses maintained and managed via [Cloud Firestore](https://firebase.google.com/docs/firestore).
+Use this extension to facilitate a basic deployment of a chatbot powered by OpenAI's [Chat Completion API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) via this [NPM package](https://www.npmjs.com/package/chatgpt), with prompts and responses maintained and managed via [Cloud Firestore](https://firebase.google.com/docs/firestore).
 
 > 💡 This extension will listen to the specified collection path for new message documents.
 

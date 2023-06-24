@@ -1,20 +1,13 @@
-# Learn detailed information about the fields of an extension.yaml file in the docs:
-# https://firebase.google.com/docs/extensions/reference/extension-yaml
-
-# Identifier for your extension
-# TODO: Replace this with an descriptive name for your extension.
 name: firestore-chatgpt-bot
 version: 0.0.1 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
-# Friendly display name for your extension (~3-5 words)
 displayName: Chatbot with ChatGPT
 
-# Brief description of the task your extension performs (~1 sentence)
 description: >-
   Deploys customizable chatbots using ChatGPT API and Firestore.
 
-license: Apache-2.0 # https://spdx.org/licenses/
+license: Apache-2.0
 
 icon: icon.png
 
@@ -37,19 +30,20 @@ author:
   authorName: Alvin James Bellero
   url: https://alvinbellero.dev/
 
-# Public URL for the source code of your extension.
 sourceUrl: https://github.com/shiftEscape/firestore-chatgpt-bot
 releaseNotesUrl: https://github.com/shiftEscape/firestore-chatgpt-bot/blob/main/CHANGELOG.md
 
-# Specify whether a paid-tier billing plan is required to use your extension.
-# Learn more in the docs: https://firebase.google.com/docs/extensions/reference/extension-yaml#billing-required-field
 billingRequired: true
+
+externalServices:
+  - name: OpenAI Chat Completion API
+    PricingUri: https://openai.com/pricing
 
 roles:
   - role: datastore.user
     reason:
       Allows this extension to access Cloud Firestore to read and process generated
-      messages.
+      responses.
 
 # In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
 # required for your extension to operate.
@@ -79,13 +73,22 @@ resources:
 # Learn more in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
 params:
+  - param: CHATGPT_API_KEY
+    label: ChatGPT API Key
+    description: >-
+      API Key to be used on ChatGPT API.
+      We recommend creating a new [KEY](https://platform.openai.com/).
+    type: secret
+    example: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    required: true
+
   - param: COLLECTION_NAME
     label: Collection Path
     description: >-
       Path to a Cloud Firestore collection which will represent a discussion
-      with OpenAI's ChatGPT.
+      with AI. The function will listen changes on this collection
     type: string
-    example: users/{uid}/discussions/{discussionId}/messages
+    example: users/{uid}/messages
     required: true
     immutable: false
 
@@ -157,6 +160,7 @@ params:
         value: southamerica-east1
       - label: Sydney (australia-southeast1)
         value: australia-southeast1
+    default: us-central1
     required: true
     immutable: true
 
@@ -170,6 +174,7 @@ params:
         value: gpt-3.5-turbo
       - label: GPT-4
         value: gpt-4
+    default: gpt-3.5-turbo
     required: true
     immutable: false
 

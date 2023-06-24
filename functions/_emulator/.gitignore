@@ -2,3 +2,4 @@
 # Firebase logs
 *-debug.log
 **/*.env
+**/*.local
