@@ -1,5 +1,5 @@
 name: firestore-chatgpt-bot
-version: 0.0.1 # Follow semver versioning
+version: 0.0.2 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 displayName: Chatbot with ChatGPT
