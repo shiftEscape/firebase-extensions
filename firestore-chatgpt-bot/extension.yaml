@@ -172,10 +172,14 @@ params:
       View the list [here](https://platform.openai.com/docs/models/overview).
     type: select
     options:
-      - label: GPT-3.5
-        value: gpt-3.5-turbo
+      - label: GPT-4 Turbo Preview
+        value: gpt-4-turbo-preview
+      - label: GPT-4 1106 Preview
+        value: gpt-4-1106-preview
       - label: GPT-4
         value: gpt-4
+      - label: GPT-3.5
+        value: gpt-3.5-turbo
     default: gpt-3.5-turbo
     required: true
     immutable: false
