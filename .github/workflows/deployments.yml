@@ -1,4 +1,4 @@
-name: Version Deployment
+name: Version Tag Deployment
 
 on:
   workflow_dispatch:
@@ -38,36 +38,3 @@ jobs:
         run: |
           git tag ${{ env.TAG_NAME }}
           git push origin ${{ env.TAG_NAME }}
-
-  create-draft-release:
-    needs: push-tag
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Extract the specific version CHANGELOG
-        id: changelog
-        run: |
-          mkdir -p /tmp
-          ($echo ./.github/script/extract_specific_changelog.sh \
-              --target=${{ env.TARGET }} \
-              --version=${{ env.VERSION_NUMBER }}) \
-            > /tmp/body.md
-
-      - name: Show CHANGELOG
-        run: |
-          cat /tmp/body.md
-
-      - name: Create draft release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ env.TAG_NAME }}
-          bodyFile: /tmp/body.md
-          generateReleaseNotes: true
-          draft: true
-          prerelease: false
