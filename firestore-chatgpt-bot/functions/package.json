@@ -20,7 +20,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "chatgpt": "^5.2.5",
-    "firebase-admin": "^11.5.0",
+    "firebase-admin": "^12.1.1",
     "firebase-functions": "^4.2.0",
     "typescript": "^5.1.3"
   },
