@@ -12,7 +12,7 @@
 
 - Added new `GPT-4o` to the `MODEL` options. [Learn more here.](https://platform.openai.com/docs/models/gpt-4o)
 
-## Version 0.1.1
+## Version 0.1.2
 
 - Added `systemMessage` to configurable paramaters.
 - Included (4) language models to the `MODEL` option. [Learn more here.](https://platform.openai.com/docs/models)

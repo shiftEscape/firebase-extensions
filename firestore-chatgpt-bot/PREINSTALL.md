@@ -45,7 +45,9 @@ When you use Firebase Extensions, you're only charged for the underlying resourc
 
 - **`Prompt Field`**: The field in the message document that contains the prompt. (Default: `prompt`)
 
-- **`Response Field`**: The field in the message document into which to put the response. (Default: `response`)
+- **`Response Field`**: The field in the message document into which to put the response. (Default: `response`
+
+- **`System Message`**: The default message that acts as an instruction for the model, ensuring it responds appropriately to the your queries.
 
 - **`Cloud Functions Location`**: Where do you want to deploy the functions created for this extension? For help selecting a location, refer to the [location selection guide](https://firebase.google.com/docs/functions/locations).
 
