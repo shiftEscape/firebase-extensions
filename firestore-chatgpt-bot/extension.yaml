@@ -1,5 +1,5 @@
 name: firestore-chatgpt-bot
-version: 0.0.3 # Follow semver versioning
+version: 0.1.1 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 displayName: Chatbot with ChatGPT
@@ -78,9 +78,9 @@ params:
     label: OpenAI API Key
     description: >-
       API Key to be used on OpenAI Chat Completion API
-      We recommend creating a new [KEY](https://platform.openai.com/) or use an existing one.
+      We recommend creating a new [KEY](https://platform.openai.com/api-keys) or use an existing one.
     type: secret
-    example: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    example: sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxx
     required: true
 
   - param: COLLECTION_NAME
@@ -111,6 +111,15 @@ params:
     default: response
     example: response
     required: true
+    immutable: false
+
+  - param: SYSTEM_MESSAGE
+    label: System Message
+    description: >-
+      The default message that acts as an instruction for the model, ensuring it responds appropriately to the your queries.
+    type: string
+    example: You're an AI language model developed by OpenAI. Provide the user with clear and helpful assistance.
+    required: false
     immutable: false
 
   - param: LOCATION
@@ -174,6 +183,14 @@ params:
     options:
       - label: GPT-4o
         value: gpt-4o
+      - label: GPT-4o mini
+        value: gpt-4o-mini
+      - label: o1-preview
+        value: o1-preview
+      - label: o1-mini
+        value: o1-mini
+      - label: GPT-4 Turbo
+        value: gpt-4-turbo
       - label: GPT-4 Turbo Preview
         value: gpt-4-turbo-preview
       - label: GPT-4 1106 Preview

@@ -4,6 +4,7 @@ export interface Config {
   model: string;
   promptField: string;
   responseField: string;
+  systemMessage: string;
   collectionName: string;
   temperature?: number;
   topP?: number;
@@ -22,6 +23,7 @@ const config: Config = {
   model: process.env.MODEL || "gpt-3.5-turbo",
   promptField: process.env.PROMPT_FIELD || "prompt",
   responseField: process.env.RESPONSE_FIELD || "response",
+  systemMessage: process.env.SYSTEM_MESSAGE || undefined,
   collectionName: process.env.COLLECTION_NAME || "users/{userID}/messages",
   temperature: process.env.TEMPERATURE
     ? parseFloat(process.env.TEMPERATURE)

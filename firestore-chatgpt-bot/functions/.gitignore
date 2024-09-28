@@ -11,3 +11,7 @@ lib/
 *.log
 
 node_modules/
+
+_emulator/
+
+.DS_Store

@@ -55,6 +55,8 @@ When you use Firebase Extensions, you're only charged for the underlying resourc
 
 - **`Response Field`**: The field in the message document into which to put the response. (Default: `response`)
 
+- **`System Message`**: The default message that acts as an instruction for the model, ensuring it responds appropriately to the your queries.
+
 - **`Cloud Functions Location`**: Where do you want to deploy the functions created for this extension? For help selecting a location, refer to the [location selection guide](https://firebase.google.com/docs/functions/locations).
 
 - **`Language Model`**: Which language `model` do you want to use? Refer to [OpenAI's Model Reference](https://platform.openai.com/docs/models/overview).
