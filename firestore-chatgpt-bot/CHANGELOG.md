@@ -20,3 +20,10 @@
   - o1-preview `o1-preview`
   - o1-mini `o1-mini`
   - GPT-4 Turbo `gpt-4-turbo`
+
+## Version 1.0.0
+
+- Added new (4) `GPT-5` variants to the `MODEL` options. [Learn more here.](https://platform.openai.com/docs/models/gpt-5)
+  - GPT-5 `gpt-5`
+  - GPT-5 mini `gpt-5-mini`
+  - GPT-5 nano `gpt-5-nano`

@@ -1,5 +1,5 @@
 name: firestore-chatgpt-bot
-version: 0.1.2 # Follow semver versioning
+version: 1.0.0 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 displayName: Chatbot with ChatGPT
@@ -181,6 +181,12 @@ params:
       View the list [here](https://platform.openai.com/docs/models/overview).
     type: select
     options:
+      - label: GPT-5
+        value: gpt-5
+      - label: GPT-5 mini
+        value: gpt-5-mini
+      - label: GPT-5 nano
+        value: gpt-5-nano
       - label: GPT-4o
         value: gpt-4o
       - label: GPT-4o mini
