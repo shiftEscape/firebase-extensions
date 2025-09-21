@@ -13,9 +13,12 @@ export const generateCompletionParams = (
   config: Config
 ): Partial<openai.CreateChatCompletionRequest> => {
   const { model, temperature, topP } = config;
-  return {
+  
+  const params: Partial<openai.CreateChatCompletionRequest> = {
     model,
     ...(temperature ? { temperature } : {}),
     ...(topP ? { top_p: topP } : {}),
   };
+  
+  return params;
 };

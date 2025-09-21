@@ -68,7 +68,9 @@ resources:
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.write
         resource: projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_NAME}/{messageId}
-      runtime: "nodejs18"
+      runtime: "nodejs20"
+      timeout: 540s
+      availableMemoryMb: 512
 
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs:
