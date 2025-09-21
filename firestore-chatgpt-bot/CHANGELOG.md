@@ -27,3 +27,7 @@
   - GPT-5 `gpt-5`
   - GPT-5 mini `gpt-5-mini`
   - GPT-5 nano `gpt-5-nano`
+
+## Version 1.0.1
+
+- Fix issues on GPT-5 usages on completions API
