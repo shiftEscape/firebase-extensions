@@ -1,0 +1,17 @@
+## Compiled JavaScript files
+**/*.js
+**/*.js.map
+
+# Typescript v1 declaration files
+typings/
+
+# Build file
+lib/
+
+*.log
+
+node_modules/
+
+_emulator/
+
+.DS_Store

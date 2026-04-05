@@ -1,0 +1,262 @@
+name: firestore-whatsapp-send
+version: 0.1.0
+specVersion: v1beta
+
+displayName: Send Messages with WhatsApp
+description: >-
+  Sends WhatsApp messages via the Meta WhatsApp Cloud API when documents are
+  written to a specified Cloud Firestore collection. Supports text messages,
+  approved templates, and writes delivery status back to the document.
+
+license: Apache-2.0
+
+sourceUrl: https://github.com/shiftEscape/firebase-extensions/tree/main/firestore-whatsapp-send
+releaseNotesUrl: https://github.com/shiftEscape/firebase-extensions/blob/main/firestore-whatsapp-send/CHANGELOG.md
+
+author:
+  authorName: shiftEscape
+  url: https://github.com/shiftEscape
+
+billingRequired: true
+
+externalServices:
+  - name: WhatsApp Cloud API (Meta)
+    pricingUri: https://developers.facebook.com/docs/whatsapp/pricing
+
+roles:
+  - role: datastore.user
+    reason: >-
+      Allows the extension to read trigger documents and write delivery status
+      back to Cloud Firestore.
+
+resources:
+  - name: sendWhatsAppMessage
+    type: firebaseextensions.v1beta.v2function
+    description: >-
+      Listens for new documents in the specified Firestore collection and sends
+      a WhatsApp message via the Meta Cloud API. Writes delivery status back to
+      the triggering document.
+    properties:
+      sourceDirectory: functions
+      buildConfig:
+        runtime: nodejs22
+      serviceConfig:
+        timeoutSeconds: 60
+        availableMemory: 256M
+      eventTrigger:
+        eventType: google.cloud.firestore.document.v1.created
+        triggerRegion: ${DATABASE_REGION}
+        eventFilters:
+          - attribute: database
+            value: ${DATABASE_ID}
+          - attribute: document
+            value: ${COLLECTION_PATH}/{documentId}
+            operator: match-path-pattern
+
+  - name: whatsappWebhook
+    type: firebaseextensions.v1beta.v2function
+    description: >-
+      Receives delivery status webhooks from Meta and updates the corresponding
+      Firestore document with delivered/read/failed status.
+    properties:
+      sourceDirectory: functions
+      buildConfig:
+        runtime: nodejs22
+      serviceConfig:
+        timeoutSeconds: 30
+        availableMemory: 256M
+      httpsTrigger:
+        invoker: public
+
+params:
+  - param: DATABASE_ID
+    label: Firestore Database ID
+    description: >-
+      The Firestore database to use. Use "(default)" for the default database,
+      or enter a named database ID.
+    type: string
+    default: (default)
+    required: true
+    immutable: false
+
+  - param: DATABASE_REGION
+    label: Firestore Database Region
+    description: >-
+      The region of your Firestore database. Must match the region where your
+      database was created (e.g. us-central1, asia-southeast1).
+    type: select
+    options:
+      - label: Iowa (us-central1)
+        value: us-central1
+      - label: South Carolina (us-east1)
+        value: us-east1
+      - label: Northern Virginia (us-east4)
+        value: us-east4
+      - label: Los Angeles (us-west2)
+        value: us-west2
+      - label: Belgium (europe-west1)
+        value: europe-west1
+      - label: London (europe-west2)
+        value: europe-west2
+      - label: Frankfurt (europe-west3)
+        value: europe-west3
+      - label: Singapore (asia-southeast1)
+        value: asia-southeast1
+      - label: Jakarta (asia-southeast2)
+        value: asia-southeast2
+      - label: Tokyo (asia-northeast1)
+        value: asia-northeast1
+      - label: Sydney (australia-southeast1)
+        value: australia-southeast1
+    required: true
+    immutable: true
+
+  - param: LOCATION
+    label: Cloud Functions Location
+    description: >-
+      Where do you want to deploy the Cloud Functions created for this
+      extension? For best performance, use the same region as your Firestore
+      database.
+    type: select
+    options:
+      - label: Iowa (us-central1)
+        value: us-central1
+      - label: South Carolina (us-east1)
+        value: us-east1
+      - label: Northern Virginia (us-east4)
+        value: us-east4
+      - label: Los Angeles (us-west2)
+        value: us-west2
+      - label: Belgium (europe-west1)
+        value: europe-west1
+      - label: London (europe-west2)
+        value: europe-west2
+      - label: Frankfurt (europe-west3)
+        value: europe-west3
+      - label: Singapore (asia-southeast1)
+        value: asia-southeast1
+      - label: Jakarta (asia-southeast2)
+        value: asia-southeast2
+      - label: Tokyo (asia-northeast1)
+        value: asia-northeast1
+      - label: Sydney (australia-southeast1)
+        value: australia-southeast1
+    required: true
+    immutable: true
+
+  - param: WHATSAPP_API_TOKEN
+    label: WhatsApp Cloud API Access Token
+    description: >-
+      Your Meta system user access token with whatsapp_business_messaging
+      permission. Generate this in the Meta Business Manager under
+      System Users. Store it as a Secret for security.
+    type: secret
+    required: true
+    immutable: false
+
+  - param: WHATSAPP_PHONE_NUMBER_ID
+    label: WhatsApp Phone Number ID
+    description: >-
+      The Phone Number ID associated with your WhatsApp Business Account.
+      Find this in the Meta Developer Portal under WhatsApp > API Setup.
+    type: string
+    required: true
+    immutable: false
+
+  - param: WHATSAPP_BUSINESS_ACCOUNT_ID
+    label: WhatsApp Business Account ID
+    description: >-
+      Your WhatsApp Business Account (WABA) ID. Used to verify incoming
+      webhook payloads.
+    type: string
+    required: true
+    immutable: false
+
+  - param: WEBHOOK_VERIFY_TOKEN
+    label: Webhook Verify Token
+    description: >-
+      A secret string you choose (any value). Enter the same string when
+      configuring the webhook in the Meta Developer Portal. Used to validate
+      that webhook calls are coming from Meta.
+    type: secret
+    required: true
+    immutable: false
+
+  - param: COLLECTION_PATH
+    label: Firestore Collection Path
+    description: >-
+      Path to the Firestore collection that will trigger WhatsApp sends.
+      Example: "whatsapp_messages" or "users/{userId}/messages".
+    type: string
+    required: true
+    immutable: false
+
+  - param: TO_FIELD
+    label: Recipient Phone Number Field
+    description: >-
+      The document field containing the recipient's phone number in E.164
+      format (e.g. +60123456789).
+    type: string
+    default: to
+    required: true
+    immutable: false
+
+  - param: MESSAGE_TYPE_FIELD
+    label: Message Type Field
+    description: >-
+      The document field specifying the message type. Accepted values:
+      "text" or "template".
+    type: string
+    default: type
+    required: true
+    immutable: false
+
+  - param: MESSAGE_FIELD
+    label: Text Message Body Field
+    description: >-
+      The document field containing the message body text (used when type
+      is "text").
+    type: string
+    default: message
+    required: true
+    immutable: false
+
+  - param: TEMPLATE_NAME_FIELD
+    label: Template Name Field
+    description: >-
+      The document field containing the approved template name (used when
+      type is "template").
+    type: string
+    default: template_name
+    required: true
+    immutable: false
+
+  - param: TEMPLATE_LANGUAGE_FIELD
+    label: Template Language Field
+    description: >-
+      The document field containing the template language code (e.g. "en",
+      "ms", "id"). Defaults to "en" if not set.
+    type: string
+    default: template_language
+    required: false
+    immutable: false
+
+  - param: TEMPLATE_PARAMS_FIELD
+    label: Template Parameters Field
+    description: >-
+      The document field containing an array of strings used as positional
+      parameters for the template body (used when type is "template").
+    type: string
+    default: template_params
+    required: false
+    immutable: false
+
+  - param: STATUS_FIELD
+    label: Delivery Status Field
+    description: >-
+      The document field where the extension writes back the send/delivery
+      status and WhatsApp message ID.
+    type: string
+    default: status
+    required: true
+    immutable: false
