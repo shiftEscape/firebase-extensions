@@ -10,6 +10,20 @@ description: >-
 
 license: Apache-2.0
 
+icon: icon.png
+
+tags:
+  [
+    messaging,
+    whatsapp,
+    whatsapp-api,
+    meta,
+    cloud-firestore,
+    firestore-trigger,
+    notifications,
+    sms,
+  ]
+
 sourceUrl: https://github.com/shiftEscape/firebase-extensions/tree/main/firestore-whatsapp-send
 releaseNotesUrl: https://github.com/shiftEscape/firebase-extensions/blob/main/firestore-whatsapp-send/CHANGELOG.md
 
