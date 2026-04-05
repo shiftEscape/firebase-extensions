@@ -30,7 +30,7 @@ roles:
       back to Cloud Firestore.
 
 resources:
-  - name: sendWhatsAppMessage
+  - name: sendWhatsAppMessageFn
     type: firebaseextensions.v1beta.v2function
     description: >-
       Listens for new documents in the specified Firestore collection and sends
@@ -53,7 +53,7 @@ resources:
             value: ${COLLECTION_PATH}/{documentId}
             operator: match-path-pattern
 
-  - name: whatsappWebhook
+  - name: whatsappWebhookFn
     type: firebaseextensions.v1beta.v2function
     description: >-
       Receives delivery status webhooks from Meta and updates the corresponding
@@ -65,8 +65,6 @@ resources:
       serviceConfig:
         timeoutSeconds: 30
         availableMemory: 256M
-      httpsTrigger:
-        invoker: public
 
 params:
   - param: DATABASE_ID

@@ -154,7 +154,6 @@ export const whatsappWebhookFn = onRequest(
   {
     region: process.env.LOCATION || "us-central1",
     secrets: ["WHATSAPP_API_TOKEN", "WEBHOOK_VERIFY_TOKEN"],
-    invoker: "public",
   },
   async (req, res) => {
     // GET: webhook verification handshake from Meta
