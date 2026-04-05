@@ -39,7 +39,7 @@ resources:
     properties:
       sourceDirectory: functions
       buildConfig:
-        runtime: nodejs22
+        runtime: nodejs18
       serviceConfig:
         timeoutSeconds: 60
         availableMemory: 256M
@@ -61,7 +61,7 @@ resources:
     properties:
       sourceDirectory: functions
       buildConfig:
-        runtime: nodejs22
+        runtime: nodejs18
       serviceConfig:
         timeoutSeconds: 30
         availableMemory: 256M

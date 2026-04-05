@@ -6,14 +6,12 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2022",
-    "lib": ["es2022"],
+    "target": "es2017",
+    "lib": ["es2017"],
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
   "compileOnSave": true,
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
